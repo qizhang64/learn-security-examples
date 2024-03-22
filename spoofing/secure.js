@@ -11,7 +11,7 @@ app.use(
     secret: `${secret}`,
     cookie: {
         httpOnly: true,
-        sameSite: true,
+        sameSite: true, // keep the integrity
     },
     resave: false,
     saveUninitialized: false
