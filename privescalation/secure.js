@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(session({
   secret: 'your_secret_key',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true // when client makes a request, server sends back id and token
 }));
 
 // Simulated database of users with different roles
