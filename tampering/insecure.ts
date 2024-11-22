@@ -42,6 +42,9 @@ app.get("/", (req: Request, res: Response) => {
 
   if (req.session.user) name = req.session.user;
 
+  // there is no input validation
+  // if {name} is a string, that's fine
+  // but if input a script, there may be a fake link inserted as a behavior
   res.send(`
   <h1>Welcome, ${name}</h1>
   <form action="/register" method="POST">
@@ -55,7 +58,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.post("/register", (req: Request, res: Response) => {
-  req.session.user = req.body.name.trim();
+  req.session.user = req.body.name.trim(); // req.body is from user, this input can be untrusted
   res.send(`<p>Thank you</p> <a href="/">Back home</a>`);
 });
 

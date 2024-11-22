@@ -17,5 +17,6 @@ The example demonstrates a vulnerability that can lead to repudiation by malicio
 ## For you to do
 
 1. Briefly explain the vulnerability.
+    malicious can access into and say they never do it
 2. Briefly explain why the vulnerability is addressed in __secure.ts__.
 3. Which design pattern is used in the secure version to address the vulnerability? Briefly explain how it works?

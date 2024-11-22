@@ -27,11 +27,12 @@ const User: Model<IUser> = mongoose.model<IUser>('User', userSchema);
 // Route to authenticate user (VULNERABLE TO NOSQL INJECTION)
 app.get('/userinfo', async (req: Request, res: Response) => {
   const { username } = req.query;
-  console.log(username);
+  console.log(username); // logging the username
 
   // Vulnerable code: Directly using user-provided values in the query
   const user = await User.findOne({ username: username as string }).exec();
-
+  // the username request from users
+  // get out through attacking for noSql query
   if (user) {
     res.send(`User: ${user}`);
   } else {
@@ -43,3 +44,5 @@ app.get('/userinfo', async (req: Request, res: Response) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+// send request like ..username[$ne]

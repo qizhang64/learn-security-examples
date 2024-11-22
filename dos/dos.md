@@ -33,3 +33,4 @@ Answer the following:
 1. Briefly explain the potential vulnerabilities in **insecure.ts** that can lead to a DoS attack.
 2. Briefly explain how a malicious attacker can exploit them.
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the DoS vulnerability?
+    rate limiter

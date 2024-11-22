@@ -25,5 +25,7 @@ This example demonstrates tampering through script injection.
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts**
+    user input can be untrust
 2. Briefly explain how a malicious attacker can exploit them.
+    a fake link can be injected as a behavior
 3. Briefly explain why **secure.ts** does not have the same vulnerabilties?

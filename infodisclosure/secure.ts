@@ -31,7 +31,7 @@ app.get('/userinfo', async (req: Request, res: Response) => {
   const { username } = req.query;
 
   // Input validation: Ensure username is a string
-  if (typeof username !== 'string') {
+  if (typeof username !== 'string') { // if the input is an object, reject it
     return res.status(400).send('Invalid username format');
   }
 

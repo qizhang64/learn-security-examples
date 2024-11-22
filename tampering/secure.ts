@@ -55,7 +55,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.post("/register", (req: Request, res: Response) => {
-  const sanitizedName = escapeHTML(req.body.name.trim());
+  const sanitizedName = escapeHTML(req.body.name.trim()); // create a white list with things that allowed
   req.session.user = sanitizedName;
   res.send(`<p>Thank you</p> <a href="/">Back home</a>`);
 });
@@ -77,10 +77,11 @@ app.listen(8000, () => {
  */
 function escapeHTML(input: string): string {
   return input
-    .replace(/&/g, "&amp;")
+    .replace(/&/g, "&amp;") // g stand for global, like a global search
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 }
-
+// only be able to accept strings
+// any script injected into it, will transformed into a string

@@ -24,10 +24,10 @@ app.use(express.urlencoded({ extended: false }));
 // middleware to create a session with secure configuration
 app.use(
   session({
-    secret: `${secret}`,
+    secret: `${secret}`, // secret comes from line 5
     cookie: {
-        httpOnly: true,
-        sameSite: true,
+        httpOnly: true, // checked, cannot prorgam automatically
+        sameSite: true, // allow programs from different sites to enter the server
     },
     resave: false,
     saveUninitialized: false

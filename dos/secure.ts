@@ -26,7 +26,7 @@ const userSchema: Schema<IUser> = new mongoose.Schema({
 const User: Model<IUser> = mongoose.model<IUser>('User', userSchema);
 
 // Configure rate limiter
-const limiter = rateLimit({
+const limiter = rateLimit({ // middleware check the input by IP
   windowMs: 5 * 1000, // 5 seconds
   max: 1, // Limit each IP to 1 request per `windowMs`
   message: 'Server is busy, please try again later.',

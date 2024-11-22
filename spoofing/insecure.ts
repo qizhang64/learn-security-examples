@@ -10,7 +10,7 @@ const app = express();
  * to extend the express-session module with custom properties 
  * Read more at https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation 
  * **/
-declare module 'express-session' {
+declare module 'express-session' { // customize it with own properties
   interface SessionData {
     user?: string;
     sensitive?: string;
@@ -22,13 +22,13 @@ app.use(express.urlencoded({ extended: false }));
 
 // middleware to create a session
 app.use(
-  session({
+  session({ // generate a session id, assign it to a cookie
     secret: "SOMESECRET",
     cookie: { httpOnly: false },
     resave: false,
     saveUninitialized: false,
   })
-);
+); // if allow, program can access
 
 /**
  * This POST endpoints is used to perform a sensitive operation
@@ -71,7 +71,7 @@ app.get("/", (req: Request, res: Response) => {
  * users after they have submitted their name
  * in the form.
  */
-app.post("/register", (req: Request, res: Response) => {
+app.post("/register", (req: Request, res: Response) => { // called when submit
   req.session.user = req.body.name.trim();
   res.send(`<p>Thank you</p> <a href="/">Back home</a>`);
 });

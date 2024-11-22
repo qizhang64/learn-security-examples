@@ -31,6 +31,7 @@ app.get('/userinfo', async (req: Request, res: Response) => {
   const uid = id as string;
 
   const user = await User.findOne({ _id: uid }).exec();
+  // if the id does not match, it will crash, and the system crash
 
   if (user) {
     res.send(`User: ${user}`);

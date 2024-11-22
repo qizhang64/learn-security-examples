@@ -34,18 +34,19 @@ app.use(bodyParser.json());
 
 // Session middleware
 app.use(session({
-  secret: 'your_secret_key',
+  secret: 'your_secret_key', // create a string and store it in cookie
   cookie: { httpOnly: true, sameSite: 'strict' }, // SameSite should be a string
   resave: false,
   saveUninitialized: true,
-}));
+})); // generate a cookie if the first time
+// not same port but same domain, not accepted
 
 // Route to update user role (WITH SESSION AUTHENTICATION)
 app.post('/update-role', (req: Request, res: Response) => {
   const { userId, newRole } = req.body;
 
   // Check if the user is logged in (authenticated)
-  if (!req.session.userId) {
+  if (!req.session.userId) { // assuming userId in session is secured
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
