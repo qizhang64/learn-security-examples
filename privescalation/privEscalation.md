@@ -25,6 +25,8 @@ The example demonstrates a privilege escalation vulnerability and how to exploit
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts**
+    The system doesn't use session or tokens to authenticate users, and all relies on userId.
 2. Briefly explain how a malicious attacker can exploit them.
+    An attacker can forge a request with any userId and newRole to bypass the authentication and authorization checks.
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the privilege escalation vulnerability?
-    use a session
+    Use express-session to ensure only authenticated user with valid session cookies can access.
