@@ -31,6 +31,10 @@ This will create a database in MongoDB called __infodisclosure__. Verify its pre
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts** that can lead to a DoS attack.
+    User.findOne({ _id: uid }) directly get inpiut from user without santinization, may lead to NoSQL injection or runtime error.
+    There is also no rate limiting.
 2. Briefly explain how a malicious attacker can exploit them.
+    The attacker can send a non-objectId value to cause crash, flood the /userinfo endpoint with excessive requests.
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the DoS vulnerability?
-    rate limiter
+    Use express-rate-limit middleware to restrict the number of request each IP can make.
+    Try-catch to throw invalid or malicious id values.
