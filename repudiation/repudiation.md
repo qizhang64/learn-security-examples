@@ -17,6 +17,8 @@ The example demonstrates a vulnerability that can lead to repudiation by malicio
 ## For you to do
 
 1. Briefly explain the vulnerability.
-    malicious can access into and say they never do it
+    Messages can be sent and retrieved without verifying the identity of the user. A malicious can access and send message anonymously and later says they never did it.
 2. Briefly explain why the vulnerability is addressed in __secure.ts__.
+    It adds authentication checks before allowing access to critical routes like /send-message and /get-messages. A logStream is used to write detailed log entries for each request and significant actions
 3. Which design pattern is used in the secure version to address the vulnerability? Briefly explain how it works?
+    It has a request logging middleware, which logs request with detailed URL, IP and timestamp.
