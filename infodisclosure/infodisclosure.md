@@ -31,8 +31,10 @@ This will create a database in MongoDB called __infodisclosure__. Verify its pre
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts**
-    input can be noSql query
+    User.findOne({ username: username as string }) directly get inpiut from user without santinization, may lead to NoSQL injection or runtime error.
+    Username value is logged using console.log, may disclose sensitive information.
 2. Briefly explain how a malicious attacker can exploit them.
+    An attacker can send a request like ?username[$ne]= to bypass authentication, or can inject malicious strings for username.
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the information disclosure vulnerability?
-    prevent sth. other than string
-    sanitization
+    Do sanitization to prevent sth. other than string for username, and avoid using console.log() to log value.
+    
