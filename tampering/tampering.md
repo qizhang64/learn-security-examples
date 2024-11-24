@@ -25,7 +25,8 @@ This example demonstrates tampering through script injection.
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts**
-    user input can be untrust
+    User inputs can be untrusted. req.body.name.trim() is directly used in dynamic HTML without sanitization.
 2. Briefly explain how a malicious attacker can exploit them.
-    a fake link can be injected as a behavior
+    An attacker can send a fake link like <a href="http://malicious-site.com">Click here</a>, which displays a malicious site, tricking users to click it.
 3. Briefly explain why **secure.ts** does not have the same vulnerabilties?
+    It uses escapeHTML to sanitize user inputs, transforming all scripts to strings.
